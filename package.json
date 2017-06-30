@@ -13,7 +13,7 @@
     "serve-static": "^1.12.3"
   },
   "devDependencies": {
-    "react-scripts": "canary",
+    "react-scripts": "^1.0.10",
     "react-snapshot": "2.0.0-0"
   },
   "scripts": {
