@@ -4,6 +4,7 @@ const serveStatic = require('serve-static')
 const app = express()
 
 app.use(serveStatic('build', {
+  extensions: ['html'],
   setHeaders(res, path) {
     const isRevved = /[a-f0-9]{7,}/.exec(path)
     res.setHeader('Cache-Control',
