@@ -1,7 +1,6 @@
 import React from 'react'
 import Quote from './Quote'
 
-import { snapshot } from 'react-snapshot'
 import { Author } from './Author'
 import { API } from './config'
 
@@ -9,12 +8,11 @@ class QuotePage extends React.Component {
   state = { quote: null }
 
   componentWillMount() {
-    snapshot(
-      () => fetch(`${API}/quotes/${this.props.id}`)
-        .then(response => response.json())
-    ).then(quote => {
-      this.setState({ quote })
-    }, () => this.setState({ error: true }))
+    fetch(`${API}/quotes/${this.props.id}`)
+      .then(response => response.json())
+      .then(quote => {
+        this.setState({ quote })
+      }, () => this.setState({ error: true }))
   }
 
   render() {
