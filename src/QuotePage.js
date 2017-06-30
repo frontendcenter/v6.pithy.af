@@ -2,7 +2,7 @@ import React from 'react'
 import Quote from './Quote'
 
 import { snapshot } from 'react-snapshot'
-import Author from './Author'
+import { Author } from './Author'
 import { API } from './config'
 
 class QuotePage extends React.Component {
@@ -20,16 +20,16 @@ class QuotePage extends React.Component {
   render() {
     const { quote } = this.state
     return quote ? (
-        <div>
-          <div className="Quotes">
-            <Quote quote={quote}/>
-          </div>
-          <div className="SectionDivider">Also by {quote.name}:</div>
-          <Author id={quote.author_id} exclude={quote.id}/>
+      <div>
+        <div className="Quotes">
+          <Quote quote={quote}/>
         </div>
-      ) : (
-        <div className="Quotes"/>
-      )
+        <div className="SectionDivider">Also by {quote.name}:</div>
+        <Author id={quote.author_id} exclude={quote.id}/>
+      </div>
+    ) : (
+      <div className="Quotes"/>
+    )
   }
 }
 
