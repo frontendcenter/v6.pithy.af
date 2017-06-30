@@ -1,5 +1,6 @@
 const express = require('express')
 const serveStatic = require('serve-static')
+const path = require('path')
 
 const app = express()
 
@@ -13,6 +14,9 @@ app.use(serveStatic('build', {
         : `max-age=0,s-maxage=31536000` )
   }
 }))
+app.get('*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, 'build/index.html'));
+});
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening on port ${port}`))
