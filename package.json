@@ -22,6 +22,7 @@
     "build": "react-scripts build && react-snapshot",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "deploy": "git push heroku master && cfcli -d pithy.af purge",
     "postinstall": "npm run build"
   }
 }
