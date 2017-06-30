@@ -2,13 +2,14 @@ import React from 'react'
 import { snapshot } from 'react-snapshot'
 import Quote from './Quote'
 import End from './End'
+import { API } from './config'
 
 export class Author extends React.Component {
   state = { quotes: null }
 
   componentWillMount() {
     snapshot(() => (
-      fetch(`/api/authors/${this.props.id}`)
+      fetch(`${API}/authors/${this.props.id}`)
         .then(response => response.json())
     ))
       .then(quotes => {

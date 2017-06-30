@@ -1,13 +1,14 @@
 import React from 'react'
 import { snapshot } from 'react-snapshot'
 import Quote from './Quote'
+import { API } from './config'
 
 class Work extends React.Component {
   state = { quotes: null }
 
   componentWillMount() {
     snapshot(() => (
-      fetch(`/api/works/${this.props.id}`)
+      fetch(`${API}/works/${this.props.id}`)
         .then(response => response.json())
     ))
       .then(quotes => {
