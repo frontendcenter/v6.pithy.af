@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pithy.af</title>
+
+    <script>
+      if (window.localStorage && window.localStorage._tk_cache) {
+        document.documentElement.classList.add('wf-active');
+        var script = document.createElement('script');
+        script.innerHTML = localStorage._tk_cache + ";(function () {var timeout = setTimeout(function () {document.documentElement.classList.remove('wf-active');}, 300); Typekit.load({ async: false, active: function () { clearTimeout(timeout); }});})();";
+        document.head.appendChild(script);
+      }
+      window._tk_onload = function () {
+        var req = new XMLHttpRequest()
+        req.addEventListener("load", function () {
+          window.localStorage._tk_cache = this.responseText;
+        });
+        req.open("GET", "https://use.typekit.net/oqw6kuv.js");
+        req.send();
+      };
+    </script>
+    <script async src="https://use.typekit.net/oqw6kuv.js"
+            onload="try { Typekit.load({ async: true, loading: window._tk_onload }) } catch (e) {}"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/reset.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
+  </head>
+
+  <body class="sans-serif">
+    <nav class="Nav mb3">
+      <a href="/" class="Logo">
+        <img src="%PUBLIC_URL%/logo.svg" alt="pithy.af logo">
+      </a>
+      <a class="NavLink" href="#">About</a>
+      <a class="NavLink" href="#">Submit a quote</a>
+    </nav>
+    <div id="root"></div>
+  </body>
+</html>

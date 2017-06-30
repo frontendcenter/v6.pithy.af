@@ -1,0 +1,325 @@
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 24em) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 20em) {
+  html {
+    font-size: 14px;
+  }
+}
+
+html:not(.wf-active) .sans-serif {
+  font-family: Avenir Next, sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+html.wf-active .sans-serif {
+  font-family: canada-type-gibson, Avenir Next, sans-serif;
+  font-weight: 400;
+}
+
+.Nav {
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
+}
+
+.Nav > :first-child {
+  margin-right: auto;
+  margin-left: 0.66rem;
+}
+
+.Nav > * + * {
+  margin-right: 0.5rem;
+}
+
+.NavLink {
+  color: inherit;
+  transition: background-color 0.1s;
+  text-decoration: none;
+  border: 2px solid currentColor;
+  padding: 0.5em 0.8em 0.45em;
+  border-radius: 100em;
+}
+
+.NavLink:hover, .NavLink:focus, .NavLink:active {
+  background-color: white;
+}
+
+.Logo {
+  line-height: 0;
+}
+.Logo > img {
+  width: 5.5rem;
+  height: auto;
+}
+
+.Quote.-main {
+  min-height: calc(100vh - 10rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 3rem;
+  position: relative;
+}
+.Quote.-main + .Quote.-main {
+  border-top: 2px solid white;
+}
+
+.Quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+@supports (mix-blend-mode: darken) {
+  .Quote::before {
+    z-index: 3;
+    mix-blend-mode: darken;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    height: 3.5rem;
+    width: 100%;
+    background: white;
+    z-index: 2;
+  }
+}
+
+.Quote:nth-child(6n + 1)::before {
+  background-color: hsl(167, 70%, 60%);
+}
+
+.Quote:nth-child(6n + 2)::before {
+  background-color: hsl(185, 70%, 60%);
+}
+
+.Quote:nth-child(6n + 3)::before {
+  background-color: hsl(39, 75%, 75%);
+}
+
+.Quote:nth-child(6n + 4)::before {
+  background-color: hsl(333, 70%, 75%);
+}
+
+.Quote:nth-child(6n + 5)::before {
+  background-color: hsl(84, 70%, 75%);
+}
+
+.Quote:nth-child(6n + 6)::before {
+  background-color: hsl(270, 75%, 80%);
+}
+
+.Quote.-end {
+  min-height: 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.Quote.-end em {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Quote_Inner {
+  width: 100%;
+  max-width: 52rem;
+}
+
+.Quote_Short {
+  position: relative;
+  z-index: 0;
+  font-weight: 300;
+  font-size: 3.25rem;
+  line-height: 1.1;
+  white-space: pre-line;
+}
+.Quote_Short[data-size="xl"] {
+  font-size: 2.25rem;
+}
+.Quote_Short[data-size="l"] {
+  font-size: 2.75rem;
+}
+.Quote_Short[data-size="m"] {
+  font-size: 3rem;
+}
+
+@media (max-width: 40em) {
+  .Quote_Short {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 30em) {
+  .Quote_Short {
+    font-size: 2rem;
+  }
+}
+
+html:not(.wf-active) .Quote_Short {
+  /* Firefox and Safari treat font-weight 300 as Ultra Light (100) */
+  font-weight: 400;
+  /* Weirdly, this gets inherited as a pixel value not
+     recalculated at the higher font-size. */
+  letter-spacing: -0.05em;
+}
+
+.Quote_Short em {
+  transition: color 0.3s;
+  position: relative;
+  font-style: normal;
+  font-weight: 300;
+  font-variant: all-small-caps;
+  letter-spacing: 0.05em;
+  padding: 0 0 0 0.5rem;
+  margin-left: -0.5em;
+}
+
+html:not(.wf-active) .Quote_Short em {
+  font-family: Palatino, serif;
+  word-spacing: 0.1em;
+  line-height: 1;
+}
+
+html.wf-active .Quote_Short em {
+  font-family: freight-text-pro, Garamond, serif;
+}
+
+.Quote_Attribution {
+  font-size: 1.25rem;
+  font-weight: 600;
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.Quote_Attribution::before {
+  content: '\2014';
+  position: absolute;
+  right: calc(100% + 0.5rem);
+}
+
+.Quote_Work {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  opacity: 0.5;
+}
+
+.Quote_Links {
+  transition: opacity 0.1s;
+  opacity: 0;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  padding-top: 1rem;
+  display: inline-block;
+}
+
+.Quote_Links a {
+  color: black;
+  opacity: 0.5;
+  padding-right: 10px;
+}
+
+.Quote_Inner:hover .Quote_Links {
+  transition: opacity 0.3s 0.3s;
+  opacity: 1;
+}
+
+.Quotes:empty {
+  height: 100vh;
+  width: 100vw;
+  background-color: hsl(167, 70%, 60%);
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  position: relative;
+  z-index: 3;
+  mix-blend-mode: darken;
+  font-size: 2.5rem;
+  font-weight: 100;
+}
+.Quotes:empty::after {
+  content: 'Loading';
+  animation: fade-in 1s ease-in both;
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+}
+
+.Link {
+  color: inherit;
+  text-decoration: none;
+}
+.Link:hover {
+  text-decoration: underline;
+}
+.Link.-block {
+  display: block;
+}
+.Link:not(.-block) + .Link:not(.-block) {
+  margin-left: 0.5rem;
+}
+.Link.-obvious {
+  font-weight: 400;
+  box-shadow: inset 0 -1px 0;
+}
+.Link.-obvious:hover {
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0;
+}
+
+.LinkSVG {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.25;
+  transition: opacity 0.2s;
+}
+.LinkSVG:hover {
+  opacity: 1;
+}
+.LinkSVG path {
+  stroke: none;
+  fill: currentColor;
+}
+
+.SectionDivider {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1.2rem;
+  position: relative;
+  background: white;
+  color: black;
+}
+@supports (mix-blend-mode: difference) and (pointer-events: none) {
+  .SectionDivider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    background: #ccc;
+    mix-blend-mode: difference;
+    transform: translateZ(0);
+  }
+}
