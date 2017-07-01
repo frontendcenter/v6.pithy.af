@@ -15,7 +15,7 @@ app.use(serveStatic('build', {
   }
 }))
 app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, 'build/index.html'));
+  response.sendFile(path.resolve(__dirname, 'build/200.html'));
 });
 
 const port = process.env.PORT || 3000
