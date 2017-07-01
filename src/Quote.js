@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from './Link'
 import LinkSVG from './LinkSVG'
+import { simplify } from './utils'
 
 const SIZES = ['s', 's', 'm', 'l', 'l']
-const simplify = str => str.toLowerCase().replace(/[^\w ]/g, '').replace(/ /g, '-')
 
 const Quote = ({ quote }) => {
   const { id, short, em_index, year, name, title, author_id, work_id } = quote

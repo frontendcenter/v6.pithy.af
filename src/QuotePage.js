@@ -2,7 +2,7 @@ import React from 'react'
 import Quote from './Quote'
 
 import { Author } from './Author'
-import { API } from './config'
+import { API } from './utils'
 
 class QuotePage extends React.Component {
   state = { quote: null }

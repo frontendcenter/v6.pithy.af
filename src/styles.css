@@ -74,7 +74,9 @@ html.wf-active .sans-serif {
   justify-content: center;
   padding: 8rem 3rem;
   position: relative;
-  border-bottom: 2px solid white;
+}
+.Quote.-main + .Quote.-main {
+  border-top: 2px solid white;
 }
 
 .Quote::before {

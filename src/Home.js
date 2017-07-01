@@ -1,7 +1,7 @@
 import React from 'react'
 import Quote from './Quote'
 import End from './End'
-import { API } from './config'
+import { API } from './utils'
 
 export default class Home extends React.Component {
   state = { quotes: null }
