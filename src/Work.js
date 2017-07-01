@@ -1,4 +1,5 @@
 import React from 'react'
+import { snapshot } from 'react-snapshot'
 import Quote from './Quote'
 import { API, simplify } from './utils'
 import End from './End'
@@ -8,8 +9,10 @@ class Work extends React.Component {
   state = { quotes: null }
 
   componentWillMount() {
-    fetch(`${API}/works/${this.props.id}`)
-      .then(response => response.json())
+    snapshot(() => (
+      fetch(`${API}/works/${this.props.id}`)
+        .then(response => response.json())
+    ))
       .then(quotes => {
         this.setState({ quotes })
       }, () => this.setState({ error: true }))
