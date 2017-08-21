@@ -1,21 +1,16 @@
 import React from 'react'
 import Quote from './Quote'
 import End from './End'
-import { API } from './utils'
+import { observer } from 'mobx-react'
+import state, { fetchQuotes } from './state'
 
-export default class Home extends React.Component {
-  state = { quotes: null }
-
+class Home extends React.Component {
   componentWillMount() {
-    fetch(`${API}/quotes`)
-      .then(response => response.json())
-      .then(quotes => {
-        this.setState({ quotes })
-      }, () => this.setState({ error: true }))
+    fetchQuotes()
   }
 
   render() {
-    const { quotes } = this.state
+    const { quotes } = state
     return (
       <div className="Quotes">
         {
@@ -31,3 +26,5 @@ export default class Home extends React.Component {
     )
   }
 }
+
+export default observer(Home)
