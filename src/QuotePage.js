@@ -1,5 +1,4 @@
 import React from 'react'
-import { snapshot } from 'react-snapshot'
 import Quote from './Quote'
 
 import { Author } from './Author'
@@ -9,10 +8,8 @@ class QuotePage extends React.Component {
   state = { quote: null }
 
   componentWillMount() {
-    snapshot(() => (
-      fetch(`${API}/quotes/${this.props.id}`)
-        .then(response => response.json())
-    ))
+    fetch(`${API}/quotes/${this.props.id}`)
+      .then(response => response.json())
       .then(quote => {
         this.setState({ quote })
       }, () => this.setState({ error: true }))
