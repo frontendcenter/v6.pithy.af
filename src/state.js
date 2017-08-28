@@ -1,9 +1,10 @@
 import { API } from './utils'
-import { observable } from 'mobx'
+import { observable, toJS } from 'mobx'
 import { snapshot } from 'react-snapshot'
 
 const state = observable({
   quotes: null,
+  quotes_by_author: new Map(),
   error: false
 })
 
@@ -25,8 +26,17 @@ export const fetchQuotes = (() => {
     snapshot_fetch(`${API}/quotes`)
       .then(quotes => {
         state.quotes = quotes
-        status.loaded = true
       }, () => state.error = true)
+      .then(() => status.loaded = true)
     return status.loaded
   }
 })()
+
+export const fetchQuotesForAuthor = (id) => (
+  fetch(`${API}/authors/${id}`)
+    .then(response => response.json())
+    .then(quotes => {
+      state.quotes_by_author.set(id, quotes)
+      console.log(toJS(state))
+    }, () => state.error = true)
+)

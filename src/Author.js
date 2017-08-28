@@ -1,21 +1,17 @@
 import React from 'react'
+import { observer } from 'mobx-react'
+
 import Quote from './Quote'
 import End from './End'
-import { API } from './utils'
+import state, { fetchQuotesForAuthor } from './state'
 
-export class Author extends React.Component {
-  state = { quotes: null }
-
+export const Author = observer(class extends React.Component {
   componentWillMount() {
-    fetch(`${API}/authors/${this.props.id}`)
-      .then(response => response.json())
-      .then(quotes => {
-        this.setState({ quotes })
-      }, () => this.setState({ error: true }))
+    fetchQuotesForAuthor(this.props.id)
   }
 
   render() {
-    const { quotes } = this.state
+    const quotes = state.quotes_by_author.get(this.props.id)
     return (
       <div className="Quotes">
         { this.props.exclude && <div/> }
@@ -33,6 +29,6 @@ export class Author extends React.Component {
       </div>
     )
   }
-}
+})
 
 export default ({ match: { params } }) => <Author id={params.id}/>
