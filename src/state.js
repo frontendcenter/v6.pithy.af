@@ -33,8 +33,7 @@ export const fetchQuotes = (() => {
 })()
 
 export const fetchQuotesForAuthor = (id) => (
-  fetch(`${API}/authors/${id}`)
-    .then(response => response.json())
+  snapshot_fetch(`${API}/authors/${id}`)
     .then(quotes => {
       state.quotes_by_author.set(id, quotes)
       console.log(toJS(state))
