@@ -8,11 +8,11 @@ import Link from './Link'
 import state, { fetchQuotesForWork } from './state'
 
 const Work = observer(({ id }) => {
-  const quotes = state.quotes_by_work.get(id)
+  const quotes = fetchQuotesForWork(id) && state.quotes_by_work.get(id)
   return (
     <div className="Quotes">
       {
-        fetchQuotesForWork(id) && quotes.map(
+        quotes && quotes.map(
           (quote, i) => <Quote key={i} quote={quote}/>
         ).concat(
           <End key="end">

@@ -6,8 +6,8 @@ import { Author } from './Author'
 import state, { fetchQuoteById } from './state'
 
 const QuotePage = observer(({ id }) => {
-  const quote = state.quotes_by_id.get(id)
-  return fetchQuoteById(id) ? (
+  const quote = fetchQuoteById(id) && state.quotes_by_id.get(id)
+  return quote ? (
     <div>
       <div className="Quotes">
         <Quote quote={quote}/>

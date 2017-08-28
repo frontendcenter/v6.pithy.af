@@ -6,12 +6,12 @@ import End from './End'
 import state, { fetchQuotesForAuthor } from './state'
 
 export const Author = observer(({ id, exclude }) => {
-  const quotes = state.quotes_by_author.get(id)
+  const quotes = fetchQuotesForAuthor(id) && state.quotes_by_author.get(id)
   return (
     <div className="Quotes">
       {exclude && <div/>}
       {
-        fetchQuotesForAuthor(id) && quotes.map((quote, i) =>
+        quotes && quotes.map((quote, i) =>
           exclude === quote.id
             ? null
             : <Quote key={i} quote={quote}/>
