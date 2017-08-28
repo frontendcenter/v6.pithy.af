@@ -13,9 +13,20 @@ const snapshot_fetch = url => snapshot(() =>
   fetch(url).then(response => response.json())
 )
 
-export const fetchQuotes = () => {
-  snapshot_fetch(`${API}/quotes`)
-    .then(quotes => {
-      state.quotes = quotes
-    }, () => state.error = true)
-}
+export const fetchQuotes = (() => {
+  const status = observable({
+    loading: false,
+    loaded: false
+  })
+  return () => {
+    if (status.loading) return status.loaded
+    status.loading = true
+    console.log("Fetching quotes")
+    snapshot_fetch(`${API}/quotes`)
+      .then(quotes => {
+        state.quotes = quotes
+        status.loaded = true
+      }, () => state.error = true)
+    return status.loaded
+  }
+})()
