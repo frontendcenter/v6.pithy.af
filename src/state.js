@@ -5,11 +5,13 @@ import { snapshot } from 'react-snapshot'
 const state = observable({
   quotes: null,
   quotes_by_author: new Map(),
+  quotes_by_work: new Map(),
+  quotes_by_id: new Map(),
   error: false
 })
-const api_requests = observable(new Map())
-
 export default state
+
+const api_requests = observable(new Map())
 
 const snapshot_fetch = (url, success) => {
   if (!api_requests.has(url)) {
@@ -23,5 +25,19 @@ const snapshot_fetch = (url, success) => {
   return api_requests.get(url)
 }
 
-export const fetchQuotes = () => snapshot_fetch(`${API}/quotes`, quotes => state.quotes = quotes)
-export const fetchQuotesForAuthor = id => snapshot_fetch(`${API}/authors/${id}`, quotes => state.quotes_by_author.set(id, quotes))
+export const fetchQuotes = () => snapshot_fetch(
+  `${API}/quotes`,
+  quotes => state.quotes = quotes
+)
+export const fetchQuotesForAuthor = id => snapshot_fetch(
+  `${API}/authors/${id}`,
+  quotes => state.quotes_by_author.set(id, quotes)
+)
+export const fetchQuotesForWork = id => snapshot_fetch(
+  `${API}/works/${id}`,
+  quotes => state.quotes_by_work.set(id, quotes)
+)
+export const fetchQuoteById = id => snapshot_fetch(
+  `${API}/quotes/${id}`,
+    quote => state.quotes_by_id.set(id, quote)
+)
